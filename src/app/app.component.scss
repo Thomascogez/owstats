@@ -1,0 +1,24 @@
+.search-container {
+    margin: 20px auto 10px auto;
+    text-align: center;
+    input[type=text] {
+        width: 40%;
+        height: 50px;
+        text-align: center;
+    }
+    button {
+        height: 50px;
+        color: #fff;
+        background-color: #fa9c1e;
+    }
+}
+
+.select {
+    width: 80px;
+    display: inline-block;
+    height: 50px !important;
+    margin: 5px 2px 0px 2px;
+    select {
+        height: 40px !important;
+    }
+}
