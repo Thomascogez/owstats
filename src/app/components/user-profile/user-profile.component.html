@@ -1,99 +1,34 @@
+<ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
+  <p class="loading">Loading Profile...</p>
+</ngx-spinner>
 <div class="container" *ngIf="userProfile">
   <div class="columns">
     <div class="column is-4 user-profile">
-      <div class="card user-profile-card">
-       
-          <header class="card-header">
-            <h1 class="card-header-title">
-              {{ userProfile.name }}
-            </h1>
-          </header>
-          <div class="card-content">
-            <div class="content">
-              <img [src]="userProfile.icon" alt="user profile picture" />
-
-              <div class="columns">
-                <div
-                  class="column"
-                  *ngFor="let roleStat of userProfile.ratings"
-                >
-                  <img
-                    style="filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);"
-                    [src]="roleStat.roleIcon"
-                    [alt]="roleStat.role"
-                  />
-                  <br />
-                  <img width="30" height="30" [src]="roleStat.rankIcon" />
-                  <h4>{{ roleStat.level }}</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-       
-      </div>
+      <app-user-info [name]="userProfile.name" [icon]="userProfile.icon" [ratings]="userProfile.ratings"></app-user-info>
     </div>
     <div class="column is-8">
       <div class="card">
-          <div class="card-content">
-              <div class="content">
-                <div class="card">
-                    <header class="card-header">
-                        <h1 class="card-header-title">
-                            global stats
-                        </h1>
-                    </header>
-                    <div class="card-content">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <td>Games won</td>
-                                    <td>Endorsment level</td>
-                                    <td>Level</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{{userProfile.gamesWon}}</td>
-                                    <td>{{userProfile.endorsement}}</td>
-                                    <td>{{userProfile.prestige+""+userProfile.level}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="content">
-                    <div class="card">
-                        <header class="card-header">
-                            <h1 class="card-header-title">
-                                Competitive stats
-                            </h1>
-                        </header>
-                        <div class="card-content">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <td>Games won</td>
-                                        <td>Gold Medal</td>
-                                        <td>Silver Medal</td>
-                                        <td>Bronze Medal</td>
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{userProfile.competitiveStats.games.won+"/"+userProfile.competitiveStats.games.played}}</td>
-                                        <td>{{userProfile.competitiveStats.awards.medalsGold}}</td>
-                                        <td>{{userProfile.competitiveStats.awards.medalsSilver}}</td>
-                                        <td>{{userProfile.competitiveStats.awards.medalsBronze}}</td>
-                                        
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-              </div>
+        <div class="card-content">
+          <div class="content">
+            <app-user-global-stats
+              [gamesWon]="userProfile.gamesWon"
+              [endorsement]="userProfile.endorsement"
+              [prestige]="userProfile.prestige"
+              [level]="userProfile.level"
+            ></app-user-global-stats>
+            <app-user-stats
+              [gameStats]="userProfile.competitiveStats"
+              title="Competitive stats"
+            ></app-user-stats>
+            <app-user-stats
+              [gameStats]="userProfile.quickPlayStats"
+              title="Quick Play stats"
+            ></app-user-stats>
           </div>
+        </div>
       </div>
     </div>
   </div>
+  
 </div>
+

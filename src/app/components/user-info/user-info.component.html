@@ -1,0 +1,25 @@
+<div class="card user-info-card">
+  <header class="card-header">
+    <h1 class="card-header-title">
+      {{ name }}
+    </h1>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <img [src]="icon" alt="user profile picture" />
+
+      <div class="columns">
+        <div class="column" *ngFor="let roleStat of ratings">
+          <img
+            style="filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);"
+            [src]="roleStat.roleIcon"
+            [alt]="roleStat.role"
+          />
+          <br />
+          <img width="30" height="30" [src]="roleStat.rankIcon" />
+          <h4>{{ roleStat.level }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

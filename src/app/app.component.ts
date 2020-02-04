@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent {
   selectedRegion: string;
   selectedPlatform: string;
 
-  constructor() {
+  constructor(private router: Router) {
     this.tag = '';
     this.selectedRegion = this.regions[0];
     this.selectedPlatform = this.platforms[0];
@@ -26,6 +27,8 @@ export class AppComponent {
   }
 
   searchPlayer() {
-    
+    if(this.isTagValid()) {
+      this.router.navigate(['/profile', this.selectedRegion, this.selectedPlatform, this.tag.replace('#', '-')]);
+    }
   }
 }

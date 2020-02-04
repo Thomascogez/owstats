@@ -5,10 +5,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserStatsComponent } from './components/user-stats/user-stats.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
+import { UserGlobalStatsComponent } from './components/user-global-stats/user-global-stats.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 @NgModule({
-  declarations: [AppComponent, UserProfileComponent],
-  imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule],
+  declarations: [AppComponent, UserProfileComponent, UserStatsComponent, UserInfoComponent, UserGlobalStatsComponent],
+  imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule, NgxSpinnerModule],
   providers: [],
   bootstrap: [AppComponent]
 })

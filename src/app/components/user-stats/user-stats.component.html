@@ -1,0 +1,27 @@
+<div class="card">
+  <header class="card-header">
+    <h1 class="card-header-title">
+      {{title}}
+    </h1>
+  </header>
+  <div class="card-content">
+    <table class="table">
+      <thead>
+        <tr>
+          <td style="color:green">Games won</td>
+          <td style="color:gold">Gold Medal</td>
+          <td style="color:silver">Silver Medal</td>
+          <td style="color:#cd7f32">Bronze Medal</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ gameStats.games.won + "/" + gameStats.games.played }}</td>
+          <td>{{ gameStats.awards.medalsGold }}</td>
+          <td>{{ gameStats.awards.medalsSilver }}</td>
+          <td>{{ gameStats.awards.medalsBronze }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

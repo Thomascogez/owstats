@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-user-profile',
@@ -13,9 +14,11 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   readonly ENDPOINT: string = 'https://ow-api.com/v1/stats';
   userProfile: any;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient, private spinner: NgxSpinnerService) {  this.spinner.show(); }
 
   ngOnInit() {
+   
+    console.log("show");
     this.routeSub = this.route.params.subscribe(param => {
       // sub to the http request
       this.httpSub = this.http
@@ -23,6 +26,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
           `${this.ENDPOINT}/${param['platform']}/${param['region']}/${param['userTag'] }/profile`)
             .subscribe(data => {
               this.userProfile = data;
+              setTimeout(() => {
+                this.spinner.hide();
+              }, 3000);
               console.log(data);
             });
     });
