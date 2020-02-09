@@ -1,6 +1,7 @@
-<ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
-  <p class="loading">Loading Profile...</p>
-</ngx-spinner>
+<ng-container>
+  <div class="notification is-danger" *ngIf="fetchError">
+    Error: Profile not found, please retry or check if the entered BattleTag is valid
+  </div>
 <div class="container" *ngIf="userProfile">
   <div class="columns">
     <div class="column is-4 user-profile">
@@ -31,4 +32,5 @@
   </div>
   
 </div>
+</ng-container>
 

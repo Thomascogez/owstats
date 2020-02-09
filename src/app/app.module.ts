@@ -9,11 +9,13 @@ import { UserStatsComponent } from './components/user-stats/user-stats.component
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { UserGlobalStatsComponent } from './components/user-global-stats/user-global-stats.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
   declarations: [AppComponent, UserProfileComponent, UserStatsComponent, UserInfoComponent, UserGlobalStatsComponent],
-  imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule, NgxSpinnerModule],
+  imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule, NoopAnimationsModule, NgxSpinnerModule],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,35 +1,51 @@
-<nav
-  class="navbar  has-text-centered"
-  role="navigation"
-  aria-label="main navigation"
->
-  <div class="navbar-brand">
-    OverStats
-  </div>
-</nav>
-
-<div class="container">
-  <div class="container search-container">
-    <h1 class="title">Search for your stats</h1>
-    <input
-      type="text"
-      placeholder="YourName#YourTag"
-      class="input"
-      [(ngModel)]="tag"
-    />
-    <button [disabled]="!isTagValid()" class="button" (click)="searchPlayer()">Search</button>
-    <br />
-
-    <div class="select">
-      <select [(ngModel)]="selectedPlatform">
-        <option *ngFor="let platform of platforms">{{ platform }}</option>
-      </select>
+<ng-container>
+  <nav
+    class="navbar  has-text-centered"
+    role="navigation"
+    aria-label="main navigation"
+  >
+    <div class="navbar-brand">
+      OverStats
     </div>
-    <div class="select">
-      <select [(ngModel)]="selectedRegion">
-        <option *ngFor="let region of regions">{{ region }}</option>
-      </select>
+  </nav>
+
+  <div class="container">
+    <div class="container search-container">
+      <h1 class="title">Search for your stats</h1>
+      <input
+        type="text"
+        placeholder="YourName#YourTag"
+        class="input"
+        [(ngModel)]="tag"
+      />
+      <button
+        [disabled]="!isTagValid()"
+        class="button"
+        (click)="searchPlayer()"
+      >
+        Search
+      </button>
+      <br />
+
+      <div class="select">
+        <select [(ngModel)]="selectedPlatform">
+          <option *ngFor="let platform of platforms">{{ platform }}</option>
+        </select>
+      </div>
+      <div class="select">
+        <select [(ngModel)]="selectedRegion">
+          <option *ngFor="let region of regions">{{ region }}</option>
+        </select>
+      </div>
     </div>
+    <router-outlet></router-outlet>
   </div>
-  <router-outlet></router-outlet>
-</div>
+  <ngx-spinner
+    bdColor="rgba(51,51,51,0.8)"
+    size="medium"
+    color="#fff"
+    type="ball-scale-multiple"
+  >
+    <p style="font-size: 20px; color: white">Loading...</p>
+  </ngx-spinner>
+</ng-container>
